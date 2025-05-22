@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +13,6 @@
       overflow-x: hidden;
       color: #00dd00;
     }
-
     .terminal {
       width: 100%;
       height: 100vh;
@@ -25,7 +23,6 @@
       position: relative;
       z-index: 2;
     }
-
     .background-glitch {
       position: fixed;
       top: 0; left: 0;
@@ -36,7 +33,6 @@
       z-index: 1;
       pointer-events: none;
     }
-
     #logo-type {
       font-size: 2rem;
       color: #00dd00;
@@ -45,7 +41,6 @@
       transition: all 0.8s ease-in-out;
       position: absolute;
     }
-
     #main-content {
       display: none;
       text-align: center;
@@ -53,20 +48,17 @@
       z-index: 3;
       animation: fadeIn 1s ease-in forwards;
     }
-
     h1 {
       font-size: 2.5rem;
       color: #00dd00;
       margin-top: 2rem;
     }
-
     .slogan {
       font-size: 0.9rem;
       color: #0088ff;
       margin-top: 1rem;
       animation: flicker 3s infinite;
     }
-
     .button-glitch {
       font-family: 'Share Tech Mono', monospace;
       font-size: 0.9rem;
@@ -79,25 +71,23 @@
       cursor: pointer;
       box-shadow: 0 0 8px #ff00aa, 0 0 16px #00aaff;
       transition: all 0.3s ease-in-out;
+      text-decoration: none;
+      display: inline-block;
     }
-
     .button-glitch:hover {
       background: #00aaff;
       color: #000000;
       text-shadow: 0 0 4px #ff00aa;
       animation: flickerBtn 0.2s infinite;
     }
-
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
-
     @keyframes flicker {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.5; }
     }
-
     @keyframes flickerBtn {
       0% { transform: translate(0px, 0px); }
       25% { transform: translate(1px, -1px); }
@@ -105,7 +95,6 @@
       75% { transform: translate(1px, 1px); }
       100% { transform: translate(0px, 0px); }
     }
-
     footer {
       color: #555;
       font-size: 0.75rem;
@@ -118,38 +107,34 @@
 </head>
 <body>
   <div class="background-glitch"></div>
-
   <div class="terminal">
     <div id="logo-type"></div>
   </div>
-
-  <div id="main-content">
+  <main id="main-content">
     <h1 id="main-logo">&gt; ZeroTrust::Records</h1>
     <div class="slogan">/// Broadcasting encrypted punk from the underground...</div>
     <div style="margin-top: 2rem;">
-      <button class="button-glitch">Explore ERROR47</button>
-      <button class="button-glitch">Visit the Store</button>
-      <button class="button-glitch">Latest News</button>
+      <a href="error47.html" class="button-glitch">Explore ERROR47</a>
+      <a href="store.html" class="button-glitch">Visit the Store</a>
+      <a href="news.html" class="button-glitch">Latest News</a>
     </div>
     <footer>
       <p><strong>DISCLAIMER:</strong> This site and its content are fictional and part of a cyberpunk music/art project. Any resemblance to real events, corporations, or governments is purely coincidental or entirely intentional. Viewer discretion is advised.</p>
       <p>&copy; 2025 ZeroTrust Records. All glitches preserved.</p>
     </footer>
-  </div>
-
-  <audio id="glitch-sound" src="https://www.fesliyanstudios.com/play-mp3/6679" preload="auto"></audio>
-
+  </main>
+  <audio id="glitch-sound" src="assets/glitch-sound.mp3" preload="auto"></audio>
   <script>
     const logoText = "> ZeroTrust::Records";
     const logoEl = document.getElementById("logo-type");
     let i = 0;
-
     function typeLogo() {
       if (i < logoText.length) {
         logoEl.textContent += logoText.charAt(i);
         i++;
         setTimeout(typeLogo, 50);
       } else {
+        document.getElementById("glitch-sound").play();
         logoEl.style.transform = "translateY(-300px) scale(0.8)";
         logoEl.style.opacity = "0";
         setTimeout(() => {
@@ -158,7 +143,6 @@
         }, 800);
       }
     }
-
     window.onload = () => {
       typeLogo();
     };
